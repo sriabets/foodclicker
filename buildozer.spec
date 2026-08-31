@@ -25,7 +25,7 @@ source.exclude_exts = pyc,pyo,xcf
 version = 1.0
 
 # (list) Application requirements
-requirements = python3.11.9,kivy,charset-normalizer==2.1.1
+requirements = python3,kivy,charset-normalizer==2.1.1
 
 # (str) Custom source code for launcher icon
 icon.filename = %(source.dir)s/assets/images/icon.png
