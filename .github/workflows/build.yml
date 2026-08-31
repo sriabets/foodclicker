@@ -24,13 +24,13 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
+          sudo apt-get install -y --no-install-recommends \
             build-essential \
             git \
             ffmpeg \
             libsdl2-dev \
             libsdl2-image-dev \
-            libsdl2-mixin-dev \
+            libsdl2-mixer-dev \
             libsdl2-ttf-dev \
             libportmidi-dev \
             libswscale-dev \
