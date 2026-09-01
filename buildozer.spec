@@ -28,7 +28,7 @@ version = 1.0
 requirements = python3,kivy,charset-normalizer==2.1.1
 
 # (str) Custom source code for launcher icon
-icon.filename = %(source.dir)s/assets/images/icon.png
+icon.filename = %(source.dir)s/assets/image/icon.png
 
 # (str) Supported orientation
 orientation = portrait
