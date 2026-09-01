@@ -52,7 +52,7 @@ android.archs = arm64-v8a
 android.accept_sdk_license = True
 
 # (str) python-for-android git clone branch to use
-p4a.branch = develop
+#p4a.branch = develop
 
 [buildozer]
 
