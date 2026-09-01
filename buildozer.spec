@@ -40,10 +40,10 @@ fullscreen = 1
 android.api = 33
 
 # (int) Minimum API required to run the app
-android.minapi = 24
+android.minapi = 21
 
 # (str) Android NDK version to use
-android.ndk = 28c
+android.ndk = 25b
 
 # (list) The Android archs to build for
 android.archs = arm64-v8a
