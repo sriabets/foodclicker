@@ -13,7 +13,7 @@ package.domain = org.pythonexpert
 source.dir = .
 
 # (list) Source files to include
-source.include_exts = py,kv,png,jpg,jpeg,mp3,ttf,tta,txt,wav
+source.include_exts = py,kv,png,jpg,jpeg,mp3,ttf,txt,wav
 
 # (list) List of directory to exclude
 source.exclude_dirs = .venv,.idea,__pycache__,bin,build,.buildozer
@@ -52,7 +52,8 @@ android.archs = arm64-v8a
 android.accept_sdk_license = True
 
 # (str) python-for-android git clone branch to use
-#p4a.branch = develop
+# Фиксируем стабильный релиз паковщика, чтобы избежать конфликта версий Python
+p4a.branch = v2024.01.21
 
 [buildozer]
 
