@@ -16,12 +16,12 @@ jobs:
       - name: Check out the project
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11.10
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11.10"
+          python-version: "3.11"
 
-      # ОПТИМІЗАЦІЯ 1: Кешування папки Buildozer (заощаджує ~5-7 хвилин на повторних збірках)
+      # Оптимізація кешування компонентів Android
       - name: Cache Buildozer Android SDK/NDK
         uses: actions/cache@v4
         with:
@@ -30,7 +30,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildozer-
 
-      # ОПТИМІЗАЦІЯ 2: Кешування завантажених pip-пакетів
       - name: Cache Pip packages
         uses: actions/cache@v4
         with:
@@ -68,7 +67,10 @@ jobs:
           python -m pip install --upgrade pip setuptools
           pip install buildozer==1.5.0 cython==0.29.33
 
+      # КРИТИЧНЕ ВИПРАВЛЕННЯ: додаємо P4A_RELEASE, щоб примусово використовувати стабільний Python 3.11
       - name: Build debug APK
+        env:
+          P4A_RELEASE: "2024.01.21"
         run: |
           set -o pipefail
           yes | buildozer android debug 2>&1 | tee buildozer.log
