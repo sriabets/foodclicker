@@ -70,7 +70,7 @@ jobs:
           python -m pip install --upgrade pip setuptools
           pip install buildozer==1.5.0 cython==0.29.33
 
-      # Запуск быстрой сборки в 4 потока (без OpenSSL она безопасна)
+      # Запуск сборки в 4 потока
       - name: Build debug APK
         run: |
           set -o pipefail
@@ -84,7 +84,7 @@ jobs:
           name: buildozer-log
           path: buildozer.log
 
-      # Крок выполнится только при успешной компиляции APK
+      # Шаг выполнится только при успешной компиляции APK
       - name: Upload APK
         if: success()
         uses: actions/upload-artifact@v4
