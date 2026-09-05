@@ -12,6 +12,8 @@ from kivy.uix.image import Image
 from kivy.animation import Animation
 from kivy.core.audio import SoundLoader
 import random
+from kivy.lang import Builder
+Builder.load_file('clicker.kv')
 
 class MenuScreen(Screen):
     bg_image = StringProperty("assets/image/bg.jpg")
