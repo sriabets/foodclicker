@@ -13,7 +13,7 @@ package.domain = org.pythonexpert
 source.dir = .
 
 # (list) Source files to include
-source.include_exts = py,kv,png,jpg,jpeg,ogg,mp3,ttf,woff,txt,wav
+source.include_exts = py,kv,png,jpg,jpeg,mp3,ttа,txt,wav
 
 # (list) List of directory to exclude
 source.exclude_dirs = .venv,.idea,__pycache__,bin,build,.buildozer
@@ -25,7 +25,7 @@ source.exclude_exts = pyc,pyo,xcf
 version = 1.0
 
 # (list) Application requirements
-requirements = python3,kivy,charset-normalizer==2.1.1
+requirements = python3==3.11.10,kivy,charset-normalizer==2.1.1
 
 # (str) Custom source code for launcher icon
 icon.filename = %(source.dir)s/assets/image/icon.png
