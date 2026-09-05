@@ -54,8 +54,8 @@ android.accept_sdk_license = True
 # Фиксируем стабильный релиз паковщика, чтобы использовать Python 3.11
 p4a.branch = v2024.01.21
 
-# Блокируем компиляцию неиспользуемых тяжелых кодеков и сетевых пакетов
-p4a.recipe_options_blacklist = libwebp,libtiff,libjxl,libavif,dav1d,openssl,sqlite3
+# Блокируем компиляцию только тяжелых внешних кодеков SDL2 картинки/видео
+p4a.recipe_options_blacklist = libwebp,libtiff,libjxl,libavif,dav1d
 
 [buildozer]
 
