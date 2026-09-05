@@ -16,12 +16,13 @@ jobs:
       - name: Check out the project
         uses: actions/checkout@v4
 
+      # Принудительная установка Python 3.11
       - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      # Оптимізація кешування компонентів Android
+      # Оптимизация кэширования компонентов Android
       - name: Cache Buildozer Android SDK/NDK
         uses: actions/cache@v4
         with:
@@ -36,6 +37,7 @@ jobs:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('buildozer.spec') }}
 
+      # Системные зависимости
       - name: Install system dependencies
         run: |
           sudo apt-get update -y
@@ -62,19 +64,19 @@ jobs:
             zip \
             unzip
 
+      # Фиксируем Cython и стабильную версию Buildozer
       - name: Install Buildozer and Cython
         run: |
           python -m pip install --upgrade pip setuptools
           pip install buildozer==1.5.0 cython==0.29.33
 
-      # КРИТИЧНЕ ВИПРАВЛЕННЯ: додаємо P4A_RELEASE, щоб примусово використовувати стабільний Python 3.11
+      # Запуск сборки в 1 поток (--num-pthreads 1) для защиты от вылета по памяти
       - name: Build debug APK
-        env:
-          P4A_RELEASE: "2024.01.21"
         run: |
           set -o pipefail
-          yes | buildozer android debug 2>&1 | tee buildozer.log
+          yes | buildozer android debug --num-pthreads 1 2>&1 | tee buildozer.log
 
+      # Лог загрузится в любом случае, даже если сборка упадет
       - name: Upload build log
         if: always()
         uses: actions/upload-artifact@v4
@@ -82,6 +84,7 @@ jobs:
           name: buildozer-log
           path: buildozer.log
 
+      # Этот шаг выполнится только при 100% успешной компиляции APK
       - name: Upload APK
         if: success()
         uses: actions/upload-artifact@v4
