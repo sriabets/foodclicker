@@ -13,7 +13,7 @@ package.domain = org.pythonexpert
 source.dir = .
 
 # (list) Source files to include
-source.include_exts = py,kv,png,jpg,jpeg,mp3,ttа,txt,wav
+source.include_exts = py,kv,png,jpg,jpeg,mp3,ttf,tta,txt,wav
 
 # (list) List of directory to exclude
 source.exclude_dirs = .venv,.idea,__pycache__,bin,build,.buildozer
