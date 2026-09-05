@@ -1,6 +1,5 @@
 [app]
 
-
 # (str) Title of your application
 title = Food Clicker
 
@@ -55,6 +54,7 @@ android.accept_sdk_license = True
 # (str) python-for-android git clone branch to use
 # Фиксируем стабильный релиз паковщика, чтобы избежать конфликта версий Python
 p4a.branch = v2024.01.21
+p4a.recipe_options_blacklist = libwebp,libtiff,libjxl,libavif,dav1d
 
 [buildozer]
 
