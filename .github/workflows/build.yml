@@ -70,11 +70,11 @@ jobs:
           python -m pip install --upgrade pip setuptools
           pip install buildozer==1.5.0 cython==0.29.33
 
-      # Запуск сборки в 1 поток (--num-pthreads 1) для защиты от вылета по памяти
+      # Запуск быстрой сборки в 4 потока (без OpenSSL она безопасна)
       - name: Build debug APK
         run: |
           set -o pipefail
-          yes | buildozer android debug --num-pthreads 1 2>&1 | tee buildozer.log
+          yes | buildozer android debug --num-pthreads 4 2>&1 | tee buildozer.log
 
       # Лог загрузится в любом случае, даже если сборка упадет
       - name: Upload build log
@@ -84,7 +84,7 @@ jobs:
           name: buildozer-log
           path: buildozer.log
 
-      # Этот шаг выполнится только при 100% успешной компиляции APK
+      # Крок выполнится только при успешной компиляции APK
       - name: Upload APK
         if: success()
         uses: actions/upload-artifact@v4
